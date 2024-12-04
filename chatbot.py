@@ -52,20 +52,9 @@ agent_with_history = RunnableWithMessageHistory(agent_executor,get_session_histo
 
 
 
-st.set_page_config(page_title="Rohith Chatbot")
+st.set_page_config(page_title="Rohith Chatbot",page_icon="🤖")
 st.title("Chat App")
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 question = st.text_input("Question: ")
 
