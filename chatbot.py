@@ -54,7 +54,12 @@ agent_with_history = RunnableWithMessageHistory(agent_executor,get_session_histo
 
 st.set_page_config(page_title="Rohith Chatbot")
 st.title("Chat App")
-
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 question = st.text_input("Question: ")
 
