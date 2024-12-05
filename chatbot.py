@@ -11,7 +11,8 @@ btn = st.button("Find Answer")
 st.sidebar.markdown("# History")
 
 if btn:
-    result = AgentHandler.ask_question(question)
+    with st.spinner("Generating answer... please wait!"):
+        result = AgentHandler.ask_question(question)
     answer = result["output"]
     st.write(answer)
     
