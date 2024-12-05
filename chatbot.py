@@ -4,8 +4,10 @@ from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
+import streamlit as st
 import os
-os.environ['GOOGLE_API_KEY']='AIzaSyAZ2gCeGU1jEj4t0uB2jmjZNtlZUTb_n1c'
+
+os.environ['GOOGLE_API_KEY']= st.secrets["GOOGLE_API_KEY"]
 
 llm = ChatGoogleGenerativeAI(model="gemini-pro",convert_system_message_to_human=True)
 
@@ -13,7 +15,7 @@ search = DuckDuckGoSearchResults()
 wikipedia = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
 
 
-#agents code
+
 from langchain.agents import AgentExecutor,create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -31,11 +33,10 @@ agent_executor = AgentExecutor(agent=agent,tools=tools,verbose=True) #to run age
 # agent_executor.invoke({"input":"when did virat kohli born?"})
 
 
-#session storage
+
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
-import streamlit as st
 from langchain.schema import HumanMessage, AIMessage
 
 if "store" not in st.session_state:
